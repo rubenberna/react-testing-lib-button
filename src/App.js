@@ -14,13 +14,14 @@ function App() {
 	}
 
 	const handleCheckbox = (e) => {
-		setDisabled(e.target.checked)
+		const isDisabled = e.target.checked
+		setDisabled(isDisabled)
 	}
 
   return (
 		<div>
 			<button
-				style={{ backgroundColor: color }}
+				style={{ backgroundColor: disabled ? 'gray' : color }}
 				disabled={disabled}
 				onClick={handleChange}
 			>
