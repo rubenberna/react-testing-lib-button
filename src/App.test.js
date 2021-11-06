@@ -44,12 +44,11 @@ test('button functionality', () => {
 	render(<App/>)
 
 	const colorButton = screen.getByRole('button')
-	const checkbox = screen.getByRole('checkbox')
+	const checkbox = screen.getByRole('checkbox', { name: 'Disable button'})
 
 	fireEvent.click(checkbox)
 	expect(colorButton).toBeDisabled()
 
 	fireEvent.click(checkbox)
 	expect(colorButton).toBeEnabled()
-
 })
