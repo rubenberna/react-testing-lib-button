@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import App from './App';
+import { replaceCamelWithSpaces } from './App';
 
 // test('renders learn react link', () => {
 //   render(<App />); // creates a virtual DOM for whatever jsx we pass as an argument
@@ -78,4 +79,18 @@ test('change color then disable', () => {
 
 	fireEvent.click(checkbox)
 	expect(colorButton).toHaveStyle({ backgroundColor: 'blue' })
+})
+
+describe('spaces before camel-case capital letters', () => {
+	test('Works for no inner capital letters', () => {
+		expect(replaceCamelWithSpaces('Red')).toBe('Red')
+	})
+
+	test('Works for one inner capital letters', () => {
+		expect(replaceCamelWithSpaces('MidnightBlue')).toBe('Midnight Blue')
+	})
+
+	test('Works for multiple inner capital letters', () => {
+		expect(replaceCamelWithSpaces('MediumVioletRed')).toBe('Medium Violet Red')
+	})
 })
